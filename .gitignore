@@ -1,5 +1,3 @@
-online
-combination-web/src/main/webapp/WEB-INF/vs3/
 *~
 .DS_Store
 *.xcuserdatad
@@ -28,13 +26,3 @@ combination-web/src/main/webapp/WEB-INF/vs3/
 *.gz
 *.classpath
 *.project
-account/
-admin/
-asset/
-attendance/
-employee/
-hr-common/
-hr-recruit/
-hr-task/
-insurance/
-privilege/
