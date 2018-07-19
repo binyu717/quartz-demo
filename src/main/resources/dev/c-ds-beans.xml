@@ -51,15 +51,14 @@
     </bean>
 
     <bean id="taskScan" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.quick.hr.dao.mapper.taskds"/>
+        <property name="basePackage" value="cn.yu.dao.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="taskSessionFactory"/>
     </bean>
 
 
-    <bean id="companyTxManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="taskTxManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="taskDs"/>
     </bean>
     <!-- enable transaction annotation support -->
-    <tx:annotation-driven transaction-manager="companyTxManager"/>
-
+    <tx:annotation-driven transaction-manager="taskTxManager"/>
 </beans>

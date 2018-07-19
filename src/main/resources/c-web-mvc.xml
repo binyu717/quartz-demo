@@ -7,13 +7,25 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
 						   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
-                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd ">
     <context:annotation-config/>
-    <context:component-scan base-package="cn.yu.services,cn.yu.dao,cn.yu.job"/>
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+    <context:component-scan base-package="cn.yu.controller"/>
+    <!-- org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler，
+        它会像一个检查员，对进入DispatcherServlet的URL进行筛查，如果发现是静态资源的请求，
+        就将该请求转由Web应用服务器默认的Servlet处理，如果不是静态资源的请求，才由DispatcherServlet继续处理。 -->
     <mvc:default-servlet-handler/>
+    <!--静态资源-->
+    <!-- 对静态资源文件的访问 支持访问WEB-INF目录 -->
+    <!--<mvc:resources mapping="/css/**" location="/css/" />-->
+    <!--<mvc:resources mapping="/js/**" location="/js/" />-->
+    <!--<mvc:resources mapping="/fonts/**" location="/fonts/" />-->
+    <!--<mvc:resources mapping="/test/**" location="/test/" />-->
 
-    <mvc:annotation-driven validator="validator">
+    <!--<mvc:annotation-driven validator="validator">--><!--加入validator启动异常-->
+
+    <!-- 告知Spring，我们启用注解驱动 -->
+    <mvc:annotation-driven >
         <!-- 处理responseBody 里面日期类型 -->
         <mvc:message-converters>
             <bean id="converter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
@@ -37,22 +49,16 @@
     </mvc:annotation-driven>
 
 
-    <!-- 文件上传参数设置 -->
-    <bean id="multipartResolver"
-          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize" value="204800000"/>
-    </bean>
+
+    <!-- 文件上传参数设置 --><!--启动异常-->
+    <!--<bean id="multipartResolver"-->
+    <!--class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+    <!--<property name="maxUploadSize" value="204800000"/>-->
+    <!--</bean>-->
 
 
-    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+    <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>-->
 
-    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"></bean>
-
-
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/" />
-        <property name="suffix" value=".html" />
-    </bean>
-
+    <!--<bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"></bean>-->
 
 </beans>
