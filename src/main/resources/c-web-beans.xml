@@ -36,6 +36,7 @@
     <!--</bean>-->
 
     <import resource="dev/c-ds-beans.xml"/>
+    <import resource="c-quartz-beans.xml"/>
 
 
 </beans>

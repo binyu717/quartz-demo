@@ -25,8 +25,6 @@
     <quartz.version>2.2.1</quartz.version>
     <spring.version>4.1.5.RELEASE</spring.version>
     <fastjson.version>1.2.35</fastjson.version>
-     <slf4j.version>1.7.7</slf4j.version>
-    <log4j.version>1.2.16</log4j.version>
     <mybatis.version>3.2.6</mybatis.version>
     <fastjson.version>1.1.41</fastjson.version>
     <druid.version>1.0.23</druid.version>
@@ -39,6 +37,7 @@
     <mybatis.spring.version>1.2.2</mybatis.spring.version>
     <mysql.version>5.1.38</mysql.version>
     <joda-time.version>2.9.9</joda-time.version>
+    <lb.version>1.1.7</lb.version>
   </properties>
 
   <dependencies>
@@ -174,16 +173,36 @@
       <version>${joda-time.version}</version>
     </dependency>
     <!--日志-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.21</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>${lb.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${lb.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-access</artifactId>
+      <version>${lb.version}</version>
+    </dependency>
     <!--<dependency>-->
     <!--<groupId>log4j</groupId>-->
     <!--<artifactId>log4j</artifactId>-->
     <!--<version>${log4j.version}</version>-->
     <!--</dependency>-->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>${slf4j.version}</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.slf4j</groupId>-->
+      <!--<artifactId>slf4j-log4j12</artifactId>-->
+      <!--<version>${slf4j.version}</version>-->
+    <!--</dependency>-->
   </dependencies>
 
   <build>
